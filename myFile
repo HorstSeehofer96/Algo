@@ -1,0 +1,28 @@
+class KMP_String_Matching {
+
+    public static void main(String args[]) {
+
+        String s = "AAAAABBBBCCDAABSFFFAGAGA";
+        char[] c = s.toCharArray();
+        int counter = 1;
+        String newString = "";
+        char currentLetter = c[0];
+
+        for (int i = 0; i < c.length; i++) {
+
+                if (c[i] != currentLetter) {
+                    newString = newString + counter + String.valueOf(currentLetter);
+                    currentLetter = c[i];
+                    counter = 0;
+                }
+                if(c.length-1 == i){
+                    counter++;
+                    newString = newString + counter + String.valueOf(currentLetter);
+                    currentLetter = c[i];
+                    counter = 0;;
+                }
+                counter++;
+        }
+        System.out.println(newString);
+    }
+}
